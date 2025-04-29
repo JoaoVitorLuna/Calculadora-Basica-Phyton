@@ -2,7 +2,7 @@
 
 Esse projeto teve como finalidade estudar a criação de um programa simples com o uso de phyton básico e de bibliotecas visuais.
 
-##Assuntos abordados:
+## Assuntos abordados:
 
 -Estruturas de decisão(if e else)
 -Estruturras de repetição(for)
