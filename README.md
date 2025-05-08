@@ -4,7 +4,7 @@ Esse projeto teve como finalidade estudar a criação de um programa simples com
 
 ## Assuntos abordados:
 
--Estruturas de decisão(if e else)
+-Estruturas de decisão(if e else)\n
 -Estruturras de repetição(for)
 -Estrutura de tratamento de exceções(Try-Except)
 -Funções em phyton
