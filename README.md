@@ -4,11 +4,11 @@ Esse projeto teve como finalidade estudar a criação de um programa simples com
 
 ## Assuntos abordados:
 
--Estruturas de decisão(if e else)\n
--Estruturras de repetição(for)
--Estrutura de tratamento de exceções(Try-Except)
--Funções em phyton
--Biblioteca gráfica(Tkinter):
-  -Criação de botões
-  -Criação de grid(Para melhor organização de botões na tela)
-  -Criação de display digital para inserção de dados
+-Estruturas de decisão(if e else)<br>
+-Estruturras de repetição(for)<br>
+-Estrutura de tratamento de exceções(Try-Except)<br>
+-Funções em phyton<br>
+-Biblioteca gráfica(Tkinter):<br>
+  •Criação de botões<br>
+  •Criação de grid(Para melhor organização de botões na tela)<br>
+  •Criação de display digital para inserção de dados<br>
