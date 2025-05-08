@@ -9,6 +9,6 @@ Esse projeto teve como finalidade estudar a criação de um programa simples com
 -Estrutura de tratamento de exceções(Try-Except)<br>
 -Funções em phyton<br>
 -Biblioteca gráfica(Tkinter):<br>
-  •Criação de botões<br>
-  •Criação de grid(Para melhor organização de botões na tela)<br>
-  •Criação de display digital para inserção de dados<br>
+   •Criação de botões<br>
+   •Criação de grid(Para melhor organização de botões na tela)<br>
+   •Criação de display digital para inserção de dados<br>
