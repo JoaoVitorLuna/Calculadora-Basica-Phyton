@@ -52,15 +52,39 @@ def calcular(): #Define a função que irá calcular a expressão final após o 
             display.insert(0, "ERRO") #Insere uma mensagem de erro
             return #Não permite com que a função continue
 
-        resultado = str(eval(expressao))  # eval calcula a expressão matemática,essa função executa uma string como um codigo Python
-        display.delete(0, tk.END)  # Limpa o display
+        # Inicializa as listas e variáveis para tratar números que começam com 0
+        partes = [] #Cria uma lista vazia para armazenar as partes da expressão(números e operadores)
+        numero_atual = "" #Cria uma string vazia para armazenar o número que está sendo processado
+
+        #Percorre cada caractere da expressão para separar números e operadores
+        for char in expressao:
+            if char in '+-*/()': #Verifica se o caractere é um operador ou parêntese
+                if numero_atual: #Se existe um número sendo processado
+                    # Remove zeros à esquerda do número, exceto se for apenas "0"
+                    if numero_atual != "0": #Se não for apenas zero
+                        numero_atual = str(int(float(numero_atual))) #Converte para float e depois int para remover zeros à esquerda
+                    partes.append(numero_atual) #Adiciona o número tratado à lista de partes
+                    numero_atual = "" #Limpa a variável para o próximo número
+                partes.append(char) #Adiciona o operador à lista de partes
+            else:
+                numero_atual += char #Se não for operador, adiciona o caractere ao número atual
+
+        #Trata o último número da expressão, se houver
+        if numero_atual:
+            if numero_atual != "0": #Se não for apenas zero
+                numero_atual = str(int(float(numero_atual))) #Remove zeros à esquerda
+            partes.append(numero_atual) #Adiciona à lista de partes
+        
+        expressao_tratada = "".join(partes) #Junta todas as partes em uma única string
+        resultado = str(eval(expressao_tratada))  #Calcula o resultado da expressão usando eval
+        display.delete(0, tk.END)  #Limpa o display
         display.insert(0, resultado) #Exibe o resultado da expressão
-        expressao = resultado  # Mantém o resultado para continuar calculando
+        expressao = resultado  #Mantém o resultado para continuar calculando
 
     except:#Caso ocorra algum erro como o usuario digitar uma letra no display o programa exxibirá a mensagem de "ERRO" na tela
-        display.delete(0, tk.END) # Limpa o display
-        display.insert(0, "Erro") # Mostra mensagem de erro
-        expressao = "" # Reseta a expressão
+        display.delete(0, tk.END) #Limpa o display
+        display.insert(0, "Erro") #Mostra mensagem de erro
+        expressao = "" #Reseta a expressão
 
 def limpar():#Definindo a função que vai limpar a tela caso o botão "C" seja pressionado
     global expressao #Declarando a variavel global dentro da função para que ela possa ser modificada dentro dessa função
@@ -186,36 +210,6 @@ botaoSub = tk.Button(
 )
 botaoSub.grid(row=3,column = 3)#Definindo aa posição do botão no grid criado anteriormente
 
-#Adicionando o botão com o número 1 na calculadora
-botao1 = tk.Button(
-    root,#Definindo em qual janela ele vai aparecer
-    text="1",#Definindo o texto que vai aparecer no botão,nesse caso o numero 1
-    command=lambda:add_numero(1),#Chamando a função de adicionar um numero na expressão numerica quando esse botão for apertado,passando 1 como parametro
-    height = 4,#Definindo a altura do botão
-    width = 8 #Definindo a largura do botão
-)
-botao1.grid(row=4,column = 0)#Definindo aa posição do botão no grid criado anteriormente
-
-#Adicionando o botão com o número 2 na calculadora
-botao2 = tk.Button(
-    root,#Definindo em qual janela ele vai aparecer
-    text="2",#Definindo o texto que vai aparecer no botão,nesse caso o numero 2
-    command=lambda:add_numero(2),#Chamando a função de adicionar um numero na expressão numerica quando esse botão for apertado,passando 2 como parametro
-    height = 4,#Definindo a altura do botão
-    width = 8 #Definindo a largura do botão
-)
-botao2.grid(row=4,column = 1)#Definindo aa posição do botão no grid criado anteriormente
-
-#Adicionando o botão com o número 3 na calculadora
-botao3 = tk.Button(
-    root,#Definindo em qual janela ele vai aparecer
-    text="3",#Definindo o texto que vai aparecer no botão,nesse caso o numero 3
-    command=lambda:add_numero(3),#Chamando a função de adicionar um numero na expressão numerica quando esse botão for apertado,passando 3 como parametro
-    height = 4,#Definindo a altura do botão
-    width = 8 #Definindo a largura do botão
-)
-botao3.grid(row=4,column = 2)#Definindo aa posição do botão no grid criado anteriormente
-
 #Adicionando o botão de soma da calculadora
 botaoSoma = tk.Button(
     root,#Definindo em qual janela ele vai aparecer
@@ -305,5 +299,35 @@ botaoResult = tk.Button(
     width = 8 #Definindo a largura do botão
 )
 botaoResult.grid(row=5,column = 3)#Definindo aa posição do botão no grid criado anteriormente
+
+#Adicionando o botão com o número 1 na calculadora
+botao1 = tk.Button(
+    root,#Definindo em qual janela ele vai aparecer
+    text="1",#Definindo o texto que vai aparecer no botão,nesse caso o numero 1
+    command=lambda:add_numero(1),#Chamando a função de adicionar um numero na expressão numerica quando esse botão for apertado,passando 1 como parametro
+    height = 4,#Definindo a altura do botão
+    width = 8 #Definindo a largura do botão
+)
+botao1.grid(row=4,column = 0)#Definindo aa posição do botão no grid criado anteriormente
+
+#Adicionando o botão com o número 2 na calculadora
+botao2 = tk.Button(
+    root,#Definindo em qual janela ele vai aparecer
+    text="2",#Definindo o texto que vai aparecer no botão,nesse caso o numero 2
+    command=lambda:add_numero(2),#Chamando a função de adicionar um numero na expressão numerica quando esse botão for apertado,passando 2 como parametro
+    height = 4,#Definindo a altura do botão
+    width = 8 #Definindo a largura do botão
+)
+botao2.grid(row=4,column = 1)#Definindo aa posição do botão no grid criado anteriormente
+
+#Adicionando o botão com o número 3 na calculadora
+botao3 = tk.Button(
+    root,#Definindo em qual janela ele vai aparecer
+    text="3",#Definindo o texto que vai aparecer no botão,nesse caso o numero 3
+    command=lambda:add_numero(3),#Chamando a função de adicionar um numero na expressão numerica quando esse botão for apertado,passando 3 como parametro
+    height = 4,#Definindo a altura do botão
+    width = 8 #Definindo a largura do botão
+)
+botao3.grid(row=4,column = 2)#Definindo aa posição do botão no grid criado anteriormente
 
 root.mainloop() #Criando o loop que mantém a janela aberta
