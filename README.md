@@ -144,3 +144,6 @@ python main.py
 - Edição de expressões
 - Feedback visual
 
+- João Vitor - [GitHub](https://github.com/JoaoVitorLuna)
+- Victor - [GitHub](https://github.com/VictorJCS)
+- Alberto Santana - [GitHub](https://github.com/AlbertoTach/)
